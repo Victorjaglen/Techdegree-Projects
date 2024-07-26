@@ -2,37 +2,45 @@ import random     # Imports the random module to create random number for guessi
 
 high_score = None     # Created a variable to track the score through the loops and the value is set to none for updating it with a condition to match the lowest attempts.
 
+
+def valid_input_check(num):    # Created a function to check the validity of the input within the given range.
+
+    while True:   
+        try:
+            number_picked = int(input(num))
+            if number_picked >= 1 and number_picked <= 10:
+                return number_picked
+            else:
+                print('That is out of the given range guess a number between (1 - 10)')  
+
+             
+        except ValueError as err : print('Please enter a Valid integer PTA')
+        except TypeError as te: print('Please enter a valid input')
+        
+
 def start_game():     # Created a function to store the game and start it when called.
 
     global high_score     # Keeping the variable global to update the value along the way, not just in one loop.
 
-    print('----------------------- Welcome to the number guessing game------------------')
+    print('----------------------- WELCOME TO THE NUMBER GUESSING GAME.------------------')
 
-    while True:     # While loop for the user to guess the number again if incorrect response.
-        try:
-            number_picked = int(input('Guess a number between 1  - 10 : '))
-            attempts = 1
-            break
-             
-        except ValueError as err: print('Please enter a Valid integer PTA')
-        
+    
+    number_picked = valid_input_check('Guess the number computer is hiding between (1- 10): ')
+    attempts = 1
 
-    guessed_num = random.randrange(11)     #random range used to select a random number and store it guessed_num variable
+    guessed_num = random.randint(1,10)     #random range used to select a random integer and stored it in guessed_num variable
 
     while number_picked != guessed_num:     #  while Condition to check the guess is correct and to prompt the user to keep guessing till the time they win.
             
-            if number_picked > 10:          # if statements to highlight how close the guess is and to inform the user in case any incorrect input
-                print('That is out of the given range guess a number between (1 - 10)')    
-
-            elif number_picked > guessed_num:
-                print('That is higher')  
+            if number_picked > guessed_num:
+                print('It is lower')  
 
             elif number_picked < guessed_num:
-                print('That is a little lower')  
+                print('It is higher')  
 
               
             try:                                                 # try block to capture in valid inputs. 
-                number_picked  = int(input('Guess again  '))
+                number_picked  = valid_input_check('Guess again  ')
                 attempts += 1
             except ValueError: print('Please Enter a Valid  integer')
 
@@ -48,30 +56,21 @@ def start_game():     # Created a function to store the game and start it when c
     while play_again.lower() == 'y':                                          # Starting the game loop again if y as yes.
 
         
-        while True:
-            try:
-                number_picked = int(input('Guess a number between 1  - 10 : '))
-                attempts = 1
-                break
-            except ValueError as err: print('Please enter a Valid integer PTA')
-        
+        number_picked = valid_input_check(' Guess the number computer is hiding between (1- 10): ')
+        attempts = 1
 
         guessed_num = random.randrange(11)
 
         while number_picked != guessed_num:
-                
-                if number_picked > 10:
-                    print('That is out of the give range, please enter a number between(1 - 10)')
-
-                elif number_picked > guessed_num:
-                    print('That is higher')    
+                if number_picked > guessed_num:
+                    print('It is Lower')    
 
                 elif number_picked < guessed_num:
-                    print('That is a little lower')
+                    print('It is Higher')
 
                 
                 try:
-                    number_picked  = int(input('Guess again  '))
+                    number_picked  = valid_input_check('Guess again  ')
                     attempts += 1
                 except ValueError: print('Please Enter a Valid  integer')
 
