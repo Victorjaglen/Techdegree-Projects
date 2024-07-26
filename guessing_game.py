@@ -33,10 +33,10 @@ def start_game():     # Created a function to store the game and start it when c
     while number_picked != guessed_num:     #  while Condition to check the guess is correct and to prompt the user to keep guessing till the time they win.
             
             if number_picked > guessed_num:
-                print('It is lower')  
+                print('The number is lower than this')  
 
             elif number_picked < guessed_num:
-                print('It is higher')  
+                print('The number is higher than this')  
 
               
             try:                                                 # try block to capture in valid inputs. 
@@ -63,10 +63,10 @@ def start_game():     # Created a function to store the game and start it when c
 
         while number_picked != guessed_num:
                 if number_picked > guessed_num:
-                    print('It is Lower')    
+                    print('The number is lower than this')    
 
                 elif number_picked < guessed_num:
-                    print('It is Higher')
+                    print('The number is Higher than this')
 
                 
                 try:
@@ -78,7 +78,7 @@ def start_game():     # Created a function to store the game and start it when c
         print(f'Great you got it!! It took you {attempts} tries')
 
         if high_score is None or attempts < high_score:
-         high_score = attempts
+            high_score = attempts
     
         print(f'The HIGH SCORE is {high_score}, can you beat that?')
 
